@@ -2,32 +2,32 @@ package mutexvschannels
 
 import "testing"
 
-func Benchmark_seriesSumWithMutex(b *testing.B) {
+func BenchmarkSeriesSumWithMutex(b *testing.B) {
 	for n := 0; n < b.N; n++ {
-		seriesSumWithMutex(2)
+		SeriesSumWithMutex(2)
 	}
 }
 
-func Benchmark_seriesSumWithChan(b *testing.B) {
+func BenchmarkSeriesSumWithChan(b *testing.B) {
 	for n := 0; n < b.N; n++ {
-		seriesSumWithChan(2)
+		SeriesSumWithChan(2)
 	}
 }
 
-func Test_seriesSumWithMutex(t *testing.T) {
+func TestSeriesSumWithMutex(t *testing.T) {
 	var (
 		wont = 3
-		get  = seriesSumWithMutex(2)
+		get  = SeriesSumWithMutex(2)
 	)
 	if wont != get {
 		t.Errorf("sum of the series: get %d, wont %d", get, wont)
 	}
 }
 
-func Test_seriesSumWithChan(t *testing.T) {
+func TestSeriesSumWithChan(t *testing.T) {
 	var (
 		wont = 3
-		get  = seriesSumWithChan(2)
+		get  = SeriesSumWithChan(2)
 	)
 	if wont != get {
 		t.Errorf("sum of the series: get %d, wont %d", get, wont)

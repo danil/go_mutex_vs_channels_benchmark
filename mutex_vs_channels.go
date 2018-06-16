@@ -18,7 +18,7 @@ type accWithChan struct {
 func (v *accWithChan) lock()   { <-v.ch }
 func (v *accWithChan) unlock() { v.ch <- struct{}{} }
 
-func seriesSumWithMutex(n int) int {
+func SeriesSumWithMutex(n int) int {
 	var (
 		v  = &accWithMutex{mu: new(sync.Mutex)}
 		wg sync.WaitGroup
@@ -36,7 +36,7 @@ func seriesSumWithMutex(n int) int {
 	return v.i
 }
 
-func seriesSumWithChan(n int) int {
+func SeriesSumWithChan(n int) int {
 	v := &accWithChan{ch: make(chan struct{}, 1)}
 	v.ch <- struct{}{}
 	var wg sync.WaitGroup
