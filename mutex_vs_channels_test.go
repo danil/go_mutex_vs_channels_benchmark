@@ -16,20 +16,20 @@ func BenchmarkSeriesSumWithChan(b *testing.B) {
 
 func TestSeriesSumWithMutex(t *testing.T) {
 	var (
-		wont = 3
-		get  = SeriesSumWithMutex(2)
+		want = 3
+		got  = SeriesSumWithMutex(2)
 	)
-	if wont != get {
-		t.Errorf("sum of the series: get %d, wont %d", get, wont)
+	if want != got {
+		t.Errorf("sum of the series: got %d, want %d", got, want)
 	}
 }
 
 func TestSeriesSumWithChan(t *testing.T) {
 	var (
-		wont = 3
-		get  = SeriesSumWithChan(2)
+		want = 3
+		got  = SeriesSumWithChan(2)
 	)
-	if wont != get {
-		t.Errorf("sum of the series: get %d, wont %d", get, wont)
+	if want != got {
+		t.Errorf("sum of the series: got %d, want %d", got, want)
 	}
 }
