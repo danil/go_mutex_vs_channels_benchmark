@@ -20,7 +20,7 @@ func (v *accWithChan) unlock() { v.ch <- struct{}{} }
 
 // SeriesSumWithMutex function is only for the sync.Mutex benchmarking.
 // Do not use the SeriesSumWithMutex function in production environment
-// not under any circumstances.
+// in any circumstances.
 func SeriesSumWithMutex(n int) int {
 	var (
 		v  = &accWithMutex{mu: new(sync.Mutex)}
@@ -41,7 +41,7 @@ func SeriesSumWithMutex(n int) int {
 
 // SeriesSumWithChan function is only for the chan benchmarking.
 // Do not use the SeriesSumWithChan function in production environment
-// not under any circumstances.
+// in any circumstances.
 func SeriesSumWithChan(n int) int {
 	v := &accWithChan{ch: make(chan struct{}, 1)}
 	v.ch <- struct{}{}
